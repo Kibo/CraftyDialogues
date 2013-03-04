@@ -1,0 +1,33 @@
+{
+    "name": "Dialogues",
+    "version": "0.6.0",
+    "title": "Crafty Dialogues",
+    "author": {
+        "name": "Tomas Jurman",
+        "url": "http://tomasjurman.blogspot.cz/"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        {
+            "type": "GPL",
+            "url": "http://www.opensource.org/licenses/gpl-license.php"
+        }
+    ],
+    "description": "The Crafty component that adds an entity a ability to carry conversation. As data source it uses JSON file. For building data source structure you can use prepared Dialogues builder tool (http://kibo.github.com/dialoguesBuilder/).",
+    "keywords": [
+        "dialogues",
+        "conversation",
+        "RPG",
+        "Dialogues builder",
+        "Crafty",
+        "javascript"
+    ],
+    "jsfiddle" : "disable", 
+    "homepage": "https://github.com/Kibo/CraftyDialogues",
+    "files": [
+    	"WebContent/dialogues.js"
+    ]
+}

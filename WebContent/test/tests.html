@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	 	<meta charset="utf-8">
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+		<script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>							
+		<script src="../libs/crafty.js"></script>
+		<script src="testdatasource.js"></script>
+		<script src="../dialogues.js"></script>
+		<script>
+		window.onload = function() {
+																												
+			Crafty.init(320, 320);
+													
+			test("hasRoot", function() {	
+				var builder = Crafty.e("Dialogues")	
+				
+				ok( builder.hasRoot( DIALOGUESBUILDER_DATA ) );
+				
+				var twoParents = DIALOGUESBUILDER_DATA;
+				twoParents.dialogues[4].parent = null;									
+				ok( !builder.hasRoot( twoParents ));
+								
+				ok( !builder.hasRoot(  {dialogues:[]} ));							
+			});	
+			
+			test("isValid", function() {										
+				var builder = Crafty.e("Dialogues")	
+				
+				ok( !builder.isValid());
+				ok( !builder.isValid( {} ));
+				ok( !builder.isValid( {dialogues:[]} ));
+				ok( builder.isValid( DIALOGUESBUILDER_DATA ));								
+			});	
+			
+			test("getRoot", function() {							
+				var builder = Crafty.e("Dialogues")								
+				builder._data = DIALOGUESBUILDER_DATA;
+				
+				ok( builder.getRoot() != null );	
+				equal( builder.getRoot().parent,  null );						
+			});
+			
+			test("setDialogues", function() {
+				var builder = Crafty.e("Dialogues")	
+				
+				builder.setDialogues(  DIALOGUESBUILDER_DATA )
+				deepEqual( builder._data, DIALOGUESBUILDER_DATA );	
+				
+				throws(
+					    function() {
+					    	builder.setDialogues( {} )
+					    },
+					    "Data is not valid."
+					 );												
+			});	
+			
+			test("getDialogues", function() {
+				var builder = Crafty.e("Dialogues")							
+				builder._data = DIALOGUESBUILDER_DATA
+				
+				deepEqual( builder.getDialogues(), DIALOGUESBUILDER_DATA );						
+			});	
+									
+			test("getActor", function() {
+				var builder = Crafty.e("Dialogues")										
+				builder._data = DIALOGUESBUILDER_DATA
+				
+				equal( builder.getActor(10).id, 10);
+				equal( builder.getActor(999), null);
+				equal( builder.getActor(), null);						
+			});	
+			
+			test("setDialogue", function() { //TODO	
+				var builder = Crafty.e("Dialogues")
+				builder._data = DIALOGUESBUILDER_DATA;
+				
+				builder.setDialogue(10)
+				equal( builder._dialogue.id, 10);
+				
+				builder.setDialogue(10)
+				equal( builder._dialogue.id, 20, "Dialog has show only one condition.");
+				
+				builder.setDialogue(41)
+				equal( builder._dialogue.id, 41);
+				
+				builder.setDialogue( builder.componentSetting.FINAL_OUTGOING_LINK_TAG )
+				equal( builder._dialogue, null);
+								
+				builder.setDialogue()
+				equal( builder._dialogue, null);
+				
+				builder.setDialogue(999)
+				equal( builder._dialogue, null);						
+			});
+			
+			test("getDialogue", function() {	
+				var builder = Crafty.e("Dialogues")
+				builder._data = DIALOGUESBUILDER_DATA;
+								
+				equal( builder.getDialogue().id, builder.getRoot().id );
+				
+				builder._dialogue = DIALOGUESBUILDER_DATA.dialogues[4];
+				equal( builder.getDialogue().id, DIALOGUESBUILDER_DATA.dialogues[4].id );									
+			});
+			
+			test("isFinal", function() {	
+				var builder = Crafty.e("Dialogues")
+				
+				builder._dialogue = DIALOGUESBUILDER_DATA.dialogues[0];
+				ok( !builder.isFinal() );
+				
+				builder._dialogue = DIALOGUESBUILDER_DATA.dialogues[4];
+				ok( builder.isFinal() );
+				
+				builder._dialogue = null;
+				
+				throws(
+					    function() {
+					    	builder.isFinal()
+					    },
+					    "Dialogue is null."
+					 );				
+			});
+						
+			test("findDialogueById", function() {	
+				var builder = Crafty.e("Dialogues")
+				builder._data = DIALOGUESBUILDER_DATA;
+				
+				equal( builder.findDialogueById(10).id, 10 );
+				equal( builder.findDialogueById(41).id, 41 );
+				
+				equal( builder.findDialogueById(999), null);
+				equal( builder.findDialogueById(), null );																
+			});
+						
+			test("createSentenceElement", function() {	
+				var builder = Crafty.e("Dialogues")
+				builder._data = DIALOGUESBUILDER_DATA;
+				
+				var result = '<p class="dialogue Ogre" data-outgoinglink="final">Good by.</p>';																	
+				equal( builder.createSentenceElement( DIALOGUESBUILDER_DATA.dialogues[4] ).outerHTML, result );	
+				
+				result = '<p class="dialogue Ogre" data-outgoinglink="20">Where is the cave?</p>';
+				equal( builder.createSentenceElement( DIALOGUESBUILDER_DATA.dialogues[0]).outerHTML, result );									 
+			});
+			
+			test("createChoiceElement", function() {	
+				var builder = Crafty.e("Dialogues")
+				builder._data = DIALOGUESBUILDER_DATA;
+															
+				var result = '<ul><li data-outgoinglink="40">Ask about cave.</li><li data-outgoinglink="50">Leave</li></ul>';																	
+				equal( builder.createChoiceElement( DIALOGUESBUILDER_DATA.dialogues[2]).outerHTML, result );																
+			});
+			
+			test("executeCode", function() {	
+				var builder = Crafty.e("Dialogues")						
+				builder._dialogue = {};
+				builder.executeCode("this.getDialogue().a=10; this.getDialogue().b='testa'");
+				
+				equal( builder._dialogue.a, 10 );
+				equal( builder._dialogue.b, "testa" );
+				
+				ok( builder.executeCode("this.getDialogue().a==10;") );	
+				ok( !builder.executeCode("this.getDialogue().c==10;") );
+				ok( !builder.executeCode("this.getDialogue().a==999;") );
+											
+				throws(
+				    function() {
+				    	builder.executeCode("this.a=='999;");
+				    },
+				    "Parse error."
+				);					
+			});
+			
+			test("isActive", function() {	
+				var builder = Crafty.e("Dialogues")	
+				var dialogue = {a:10, b:'testa'};	
+				builder._dialogue = dialogue;
+			
+				dialogue.conditionsString="this.getDialogue().a==10";
+				ok( builder.isActive(dialogue));
+				
+				dialogue.conditionsString="this.getDialogue().b=='testa'";
+				ok( builder.isActive(dialogue) );
+				
+				dialogue.conditionsString="";
+				ok( builder.isActive(dialogue));
+				
+				dialogue.conditionsString="this.a==999";
+				ok( !builder.isActive(dialogue));
+				
+				dialogue.conditionsString="this.c==10";
+				ok( !builder.isActive(dialogue));	
+			});
+
+										
+//-- SOURCE DATA----------------------------------------------
+			
+		} // onload
+		</script>				
+	</head>
+	<body>
+		<h1 id="qunit-header">Crafty: DialoguesBuilder</h1>
+		<h2 id="qunit-banner"></h2>
+		<div id="qunit-testrunner-toolbar"></div>
+		<h2 id="qunit-userAgent"></h2>
+		<ol id="qunit-tests"></ol>
+		<div id="qunit-fixture">test markup, will be hidden</div>
+		
+	</body>
+</html>
