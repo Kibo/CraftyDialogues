@@ -26,19 +26,18 @@ TODO
 2) Export your tiled map as JSON ([example](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/examples/simple/js/dialoguesdatasource.js))
 
 3) Use [Crafty.js](http://craftyjs.com/) for building your amazing HTML5 game based on conversation.
-[![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](#)
+[![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](http://kibo.github.com/CraftyDialogues/examples/conditional/index.html)
 
 
 ###Examples
-- [Simple conversation](#)
-- [Conditional conversation](#)
+- [Simple conversation](http://kibo.github.com/CraftyDialogues/examples/simple/index.html)
+- [Conditional conversation](http://kibo.github.com/CraftyDialogues/examples/conditional/index.html)
 
 ###Documentation
 - [Interactive dialogue for videogame - part 1](http://tomasjurman.blogspot.cz/2013/02/interactive-dialogue-for-html5-game.html)
 - [Interactive dialogue for videogame - part 2](#)
 
-**Contact me**
-
+###Contact me
 I will be grateful for constructive comments.
 
 - [Crafty group thread](https://groups.google.com/d/msg/craftyjs/_gw_gTHC2HU/8eEx1PLa5uwJ)
