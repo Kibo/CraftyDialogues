@@ -26,6 +26,7 @@ TODO
 - [Simple conversation](#)
 - [Conditional conversation](#)
 
+[![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](#)
 
 ###Documentation
 - [Interactive dialogue for videogame - part 1](http://tomasjurman.blogspot.cz/2013/02/interactive-dialogue-for-html5-game.html)
