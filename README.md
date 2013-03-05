@@ -37,8 +37,7 @@ At the end of conversation you can catch a **ConversationIsOver** event.
 Crafty.e("2D, DOM, Dialogues")
 .bind("ConversationIsOver", function(){          	        	
 	this.endOfConversation();
-});
-;   
+}); 
 ```
 
 **Helper method**
@@ -99,7 +98,7 @@ Dialogue as data
 2. conditionsString
 3. codeAfter
 
-#### Code scope
+#### Scope of code
 
 Execute code on the current dialogue
 ```
