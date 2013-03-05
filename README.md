@@ -43,19 +43,19 @@ Crafty.e("2D, DOM, Dialogues")
 
 **Helper method**
 
-Leave resources after the end of the conversation
+Close the conversation
 ```
 Crafty.e("2D, DOM, Dialogues").endOfConversation();   
-```
-
-Get actual dialogue
-```
-Crafty.e("2D, DOM, Dialogues").getDialogue();   
 ```
 
 Clear chat container
 ```
 Crafty.e("2D, DOM, Dialogues").emptyChatContainer();   
+```
+
+Get actual dialogue
+```
+Crafty.e("2D, DOM, Dialogues").getDialogue();   
 ```
 
 Find dialogue by id
