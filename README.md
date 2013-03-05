@@ -17,13 +17,61 @@
 - [tested code](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/test/tests.html)
 
 ###Usage:
-TODO
+Set source data to entity.
+```
+Crafty.e("2D, DOM, Dialogues").setDialogues( DIALOGUES_DATA_SOURCE );   
+```
+
+Make sure that there is a container for dialogs. Default container for views is #chat, but you can change it.
+```
+<div id="chat"></div>
+```
+
+Show dialogue
+```
+Crafty.e("2D, DOM, Dialogues").showDialogue();   
+```
+
+At the end of conversation you can catch a **ConversationIsOver** event.
+```
+Crafty.e("2D, DOM, Dialogues")
+.bind("ConversationIsOver", function(){          	        	
+	this.endOfConversation();
+});
+;   
+```
+
+**Helper method**
+Get actual dialogue
+```
+Crafty.e("2D, DOM, Dialogues").getDialogue();   
+```
+
+Clear chat container
+```
+Crafty.e("2D, DOM, Dialogues").emptyChatContainer();   
+```
+
+Find dialogue by id
+```
+Crafty.e("2D, DOM, Dialogues").findDialogueById(id);   
+```
+
+Get root of dialogues
+```
+Crafty.e("2D, DOM, Dialogues").getRoot();   
+```
+
+Get actor
+```
+Crafty.e("2D, DOM, Dialogues").getActor( id );   
+```
 
 ###Work procedure:
 1) Use [Dialogues builder tool](http://kibo.github.com/dialoguesBuilder/) to create conversation tree.
 [![Dialogues builder tool](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/dialoguesTree.png)](http://kibo.github.com/dialoguesBuilder/)
 
-2) Export your tiled map as JSON ([example](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/examples/simple/js/dialoguesdatasource.js))
+2) Export your conversation as JSON ([example](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/examples/simple/js/dialoguesdatasource.js))
 
 3) Use [Crafty.js](http://craftyjs.com/) for building your amazing HTML5 game based on conversation.
 [![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](http://kibo.github.com/CraftyDialogues/examples/conditional/index.html)
