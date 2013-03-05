@@ -99,7 +99,7 @@ Dialogue as data
 2. conditionsString
 3. codeAfter
 
-**Code scope
+**Code scope**
 
 Execute code on current dialogue
 ```
@@ -126,7 +126,7 @@ Evaluate the condition of an remote entity
 "conditionsString": "Crafty("RemoteEntity").isReady == true",
 ```
 
-**Chat container
+**Chat container**
 
 For appearance of chat container use CSS. There are helper class.
 
