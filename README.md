@@ -42,6 +42,12 @@ Crafty.e("2D, DOM, Dialogues")
 ```
 
 **Helper method**
+
+Leave resources after the end of the conversation
+```
+Crafty.e("2D, DOM, Dialogues").endOfConversation();   
+```
+
 Get actual dialogue
 ```
 Crafty.e("2D, DOM, Dialogues").getDialogue();   
@@ -57,7 +63,7 @@ Find dialogue by id
 Crafty.e("2D, DOM, Dialogues").findDialogueById(id);   
 ```
 
-Get root of dialogues
+Root of dialogues
 ```
 Crafty.e("2D, DOM, Dialogues").getRoot();   
 ```
