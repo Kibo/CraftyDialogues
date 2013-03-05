@@ -111,7 +111,7 @@ Evaluate the condition on the current dialogue
 "conditionsString": "this.getDialogue().passThrough==true",
 ```
 
-Execute code on "this" scope of entity
+Execute code on "this" scope of the entity with Dialogues component
 ```
 "codeBefore": "this.experience = 1000",
 ```
@@ -131,6 +131,7 @@ Evaluate the condition on an remote entity
 For appearance of chat container use CSS. There are helper class.
 
 **Sentence**
+
 Note the class. You will need it. "Ogre" is the actor name from your source JSON file.
 This create class name with actor name.
 ```
