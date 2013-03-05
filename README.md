@@ -20,13 +20,18 @@
 TODO
 
 ###Work procedure:
-TODO
+1) Use [Dialogues builder tool](http://kibo.github.com/dialoguesBuilder/) to create conversation tree.
+[![Dialogues builder tool](#)](#)
+
+2) Export your tiled map as JSON ([example](#))
+
+3) Use [Crafty.js](http://craftyjs.com/) for building your amazing HTML5 game based on conversation.
+[![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](#)
+
 
 ###Examples
 - [Simple conversation](#)
 - [Conditional conversation](#)
-
-[![Simple conversation](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/conditionalExample.png)](#)
 
 ###Documentation
 - [Interactive dialogue for videogame - part 1](http://tomasjurman.blogspot.cz/2013/02/interactive-dialogue-for-html5-game.html)
