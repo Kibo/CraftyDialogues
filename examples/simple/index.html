@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Crafty</title>
+    <style>
+    body, html { margin:0; padding: 0; overflow:hidden; font-family:Arial; font-size:20px }
+    
+    #cr-stage{
+    	margin:0 auto;
+    	background:#eee;
+    }
+    
+    #chat{
+    	background:orange;
+    	width:800px;
+    	margin:0 auto;
+    	padding:0.5em 0;    	
+    }
+    
+    #chat ul{
+    	margin:0;
+    	padding:0;
+    }
+    
+    #chat p, #chat li{
+    	margin:0;    	
+    	padding:0 0.5em;
+    	cursor:pointer;   
+    	text-decoration:underline;
+    	color:blue;
+    }
+    
+    #chat .Ogre{
+    	background:url(../../img/ogreFace.png) no-repeat 0 0;
+    	padding-left:30px;
+    }
+    
+     #chat .Player{
+    	background:url(../../img/playerFace.png) no-repeat 0 0;
+    	padding-left:30px;
+    }
+       
+                   
+    </style>  
+  </head>
+  <body>          
+	<script>
+  		window.onload = function() {  	
+  			  			  			  			  	
+  			var BOARD_WIDTH = 800;
+  			var BOARD_HEIGHT = 250;  
+  			var SPRITE_WIDTH = 50;
+  			var SPRITE_HEIGHT = 67;
+  			Crafty.init(BOARD_WIDTH, BOARD_HEIGHT);  			  		
+  			Crafty.scene("Load", function() {
+				
+  				//Preload sprites first
+  				 Crafty.load([  				           
+  				              "../../img/ogre.png",
+  				             ], function() {
+  					 
+  					Crafty.sprite(SPRITE_WIDTH,SPRITE_HEIGHT,"../../img/ogre.png", {
+  						 Ogre:[0,0]
+  					});
+  					   					
+  					  					
+  					Crafty.scene("Main");		
+  					});  				
+  			});
+  			
+  			Crafty.scene("Load");
+  			  			  		
+			Crafty.scene("Main", function () {
+				
+				Crafty.e("2D, DOM, Ogre, Mouse, Dialogues")
+				.attr({x:BOARD_WIDTH/2 - SPRITE_WIDTH/2 , y:BOARD_HEIGHT/2 - SPRITE_HEIGHT/2 })
+				.sprite(0, 0, 2, 2)
+				.setDialogues( DIALOGUES_DATA_SOURCE  )	
+				.bind("Click", function(){          	        	
+					this.showDialogue();		        	
+		        })
+		        .bind("ConversationIsOver", function(){          	        	
+		        	this.endOfConversation();	        	
+		        });														   
+  			});  					
+  	}	
+	</script>		
+	<p align="center"><strong>Click to the Ogre</strong> for starting conversation.</p>			
+	<div id="cr-stage"></div>
+	<div id="chat"></div>
+		
+	<script src="../../libs/crafty.js"></script>	
+    <script src="../../dialogues.js"></script> 	
+    <script src="js/dialoguesdatasource.js"></script>   																											
+  </body>
+</html>
