@@ -13,8 +13,8 @@
 
 ###Advantage:
 - no depending on the third party library
-- [documented code](#)
-- [tested code](#)
+- [documented code](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/dialogues.js)
+- [tested code](https://github.com/Kibo/CraftyDialogues/blob/master/WebContent/test/tests.html)
 
 ###Usage:
 TODO
