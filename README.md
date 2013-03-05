@@ -73,6 +73,82 @@ Get actor
 Crafty.e("2D, DOM, Dialogues").getActor( id );   
 ```
 
+###How it work
+
+Dialogue as data
+```
+{
+	"id": 41,
+	"parent": 40,
+	"isChoice": false,
+	"actor": 20,
+	"conversant": 10,
+	"menuText": "",
+	"dialogueText": "Over the gate is hell.",
+	"conditionsString": "",
+	"codeBefore": "",
+	"codeAfter": "",
+	"outgoingLinks": [
+		42
+	]
+}
+```
+
+**Order of execution of code**
+1. codeBefore
+2. conditionsString
+3. codeAfter
+
+**Code scope
+
+Execute code on current dialogue
+```
+"codeAfter": "this.getDialogue().passThrough=true",
+```
+
+Evaluate the condition of the current dialogue
+```
+"conditionsString": "this.getDialogue().passThrough==true",
+```
+
+Execute code on "this" scope of entity
+```
+"codeBefore": "this.experience = 1000",
+```
+
+Execute code on remote entity
+```
+"codeBefore": "Crafty("RemoteEntity").isReady = true",
+```
+
+Evaluate the condition of an remote entity
+```
+"conditionsString": "Crafty("RemoteEntity").isReady == true",
+```
+
+**Chat container
+
+For appearance of chat container use CSS. There are helper class.
+
+Sentence. 
+Note the class. You will need it. "Ogre" is the actor name from your source JSON file.
+This create class name with actor name.
+```
+<div id="chat">
+	<p class="dialogue Ogre" data-outgoinglink="20">I do not know you. What is your name?</p>
+</div>
+```
+
+Choice
+```
+<div id="chat">
+	<ul>
+		<li data-outgoinglink="40">Ask at the entrance.</li>
+		<li data-outgoinglink="60">Leave</li>
+	</ul>
+</div>
+```
+
 ###Work procedure:
 1) Use [Dialogues builder tool](http://kibo.github.com/dialoguesBuilder/) to create conversation tree.
 [![Dialogues builder tool](https://raw.github.com/Kibo/CraftyDialogues/master/WebContent/img/dialoguesTree.png)](http://kibo.github.com/dialoguesBuilder/)
@@ -89,7 +165,7 @@ Crafty.e("2D, DOM, Dialogues").getActor( id );
 
 ###Documentation
 - [Interactive dialogue for videogame - part 1](http://tomasjurman.blogspot.cz/2013/02/interactive-dialogue-for-html5-game.html)
-- [Interactive dialogue for videogame - part 2](#)
+- [Interactive dialogue for videogame - part 2](#) TODO
 
 ###Contact me
 I will be grateful for constructive comments.
