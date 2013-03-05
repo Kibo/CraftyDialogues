@@ -94,19 +94,19 @@ Dialogue as data
 }
 ```
 
-**Order of execution of code**
+#### Order of execution of code
 1. codeBefore
 2. conditionsString
 3. codeAfter
 
-**Code scope**
+#### Code scope
 
-Execute code on current dialogue
+Execute code on the current dialogue
 ```
 "codeAfter": "this.getDialogue().passThrough=true",
 ```
 
-Evaluate the condition of the current dialogue
+Evaluate the condition on the current dialogue
 ```
 "conditionsString": "this.getDialogue().passThrough==true",
 ```
@@ -116,21 +116,21 @@ Execute code on "this" scope of entity
 "codeBefore": "this.experience = 1000",
 ```
 
-Execute code on remote entity
+Execute code on an remote entity
 ```
-"codeBefore": "Crafty("RemoteEntity").isReady = true",
-```
-
-Evaluate the condition of an remote entity
-```
-"conditionsString": "Crafty("RemoteEntity").isReady == true",
+"codeBefore": "Crafty("RemoteEntityName").isReady = true",
 ```
 
-**Chat container**
+Evaluate the condition on an remote entity
+```
+"conditionsString": "Crafty("RemoteEntityName").isReady == true",
+```
+
+#### Chat container
 
 For appearance of chat container use CSS. There are helper class.
 
-Sentence. 
+**Sentence**
 Note the class. You will need it. "Ogre" is the actor name from your source JSON file.
 This create class name with actor name.
 ```
@@ -139,7 +139,7 @@ This create class name with actor name.
 </div>
 ```
 
-Choice
+**Choice**
 ```
 <div id="chat">
 	<ul>
