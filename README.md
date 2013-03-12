@@ -165,7 +165,10 @@ This create class name with actor name.
 
 ###Documentation
 - [Interactive dialogue for videogame - part 1](http://tomasjurman.blogspot.cz/2013/02/interactive-dialogue-for-html5-game.html)
-- [Interactive dialogue for videogame - part 2](#) TODO
+- [Interactive dialogue for videogame - part 2](http://tomasjurman.blogspot.cz/2013/03/interactive-dialogue-for-html5-game.html)
+
+###It may interest you to know
+- [Tiled map builder module](https://github.com/Kibo/TiledMapBuilder) for [Crafty](http://craftyjs.com/) game engine
 
 ###Contact me
 I will be grateful for constructive comments.
